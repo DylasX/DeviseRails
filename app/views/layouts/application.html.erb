@@ -2,33 +2,31 @@
 <html>
 <head>
   <title>Deviseapp</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <%= value %>
-    </div>
-<% end %>
 
-<!--
-<% if current_user %>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to 'Login', new_user_session_path %>
-<% end %>
--->
 
-<% if current_user %>
-    Welcome <%= current_user.email %> <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to 'Login', new_user_session_path %>
-<% end %>
-
+  <div class="navbar-fixed">
+  <nav>
+     <div class="nav-wrapper">
+       <a href="#" class="brand-logo "><h4>Devise</h4></a>
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+         <li>
+         <% if current_user %>
+             Welcome <%= current_user.email %><li><%= link_to '<i class="mdi-action-highlight-remove"></i>'.html_safe, destroy_user_session_path, method: :delete %></li>
+         <% else %>
+             <%= link_to '<i class="mdi-action-account-circle"></i>'.html_safe, new_user_session_path %>
+         <% end %>
+       </li>
+       </ul>
+     </div>
+   </nav>
+ </div>
 
 
 
